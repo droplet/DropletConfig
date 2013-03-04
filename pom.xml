@@ -6,7 +6,7 @@
 	<name>DropletConfig</name>
 	<groupId>org.spout.droplet</groupId>
 	<artifactId>config</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1</version>
 	<url>http://www.spout.org</url>
 	<inceptionYear>2013</inceptionYear>
 	<description>Configuration and command "Droplet" plugin for the Spout platform to demonstrate the usage of commands and files.</description>
@@ -37,9 +37,9 @@
 
 	<!-- Source code access -->
 	<scm>
-		<developerConnection>scm:git:git@github.com:Droplets/DropletConfig.git</developerConnection>
-		<connection>scm:git:git://github.com/Droplets/DropletConfig.git</connection>
-		<url>https://github.com/Droplets/DropletConfig</url>
+		<developerConnection>scm:git:git@github.com:Droplet/DropletConfig.git</developerConnection>
+		<connection>scm:git:git://github.com/Droplet/DropletConfig.git</connection>
+		<url>https://github.com/Droplet/DropletConfig</url>
 	</scm>
 
 	<!-- Build server -->
