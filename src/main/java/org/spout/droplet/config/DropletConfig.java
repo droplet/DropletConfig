@@ -25,18 +25,13 @@ package org.spout.droplet.config;
 
 import java.util.logging.Level;
 
-import org.spout.api.UnsafeMethod;
-import org.spout.api.command.CommandRegistrationsFactory;
-import org.spout.api.command.annotated.AnnotatedCommandRegistrationFactory;
-import org.spout.api.command.annotated.SimpleAnnotatedCommandExecutorFactory;
-import org.spout.api.command.annotated.SimpleInjector;
+import org.spout.api.command.annotated.AnnotatedCommandExecutorFactory;
 import org.spout.api.exception.ConfigurationException;
-import org.spout.api.plugin.CommonPlugin;
-
-import org.spout.droplet.config.commands.DropletCommand;
+import org.spout.api.plugin.Plugin;
+import org.spout.droplet.config.commands.DropletCommands;
 import org.spout.droplet.config.configuration.DropletConfigFile;
 
-public class DropletConfig extends CommonPlugin {
+public class DropletConfig extends Plugin {
 	public DropletConfigFile configFile;
 
 	@Override
@@ -45,7 +40,6 @@ public class DropletConfig extends CommonPlugin {
 	}
 
 	@Override
-	@UnsafeMethod
 	public void onEnable() {
 		/**
 		 * Initialize file
@@ -61,8 +55,7 @@ public class DropletConfig extends CommonPlugin {
 		/**
 		 * Commands
 		 */
-		CommandRegistrationsFactory<Class<?>> commandRegFactory = new AnnotatedCommandRegistrationFactory(new SimpleInjector(this), new SimpleAnnotatedCommandExecutorFactory());
-		getEngine().getRootCommand().addSubCommands(this, DropletCommand.class, commandRegFactory);
+		AnnotatedCommandExecutorFactory.create(new DropletCommands(this), getEngine().getCommandManager().getCommand("config"));
 	}
 
 	@Override

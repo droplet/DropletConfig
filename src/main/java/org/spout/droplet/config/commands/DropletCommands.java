@@ -25,12 +25,11 @@ package org.spout.droplet.config.commands;
 
 import java.util.List;
 
-import org.spout.api.chat.ChatArguments;
-import org.spout.api.chat.style.ChatStyle;
-import org.spout.api.command.CommandContext;
+import org.spout.api.command.CommandArguments;
 import org.spout.api.command.CommandSource;
 import org.spout.api.command.annotated.Command;
-import org.spout.api.command.annotated.CommandPermissions;
+import org.spout.api.command.annotated.Permissible;
+import org.spout.api.exception.CommandException;
 import org.spout.api.exception.ConfigurationException;
 
 import org.spout.droplet.config.DropletConfig;
@@ -44,8 +43,8 @@ public class DropletCommands {
 	}
 
 	@Command(aliases = {"i", "int"}, usage = "<integer>", desc = "Edits the integer portion of the config.")
-	@CommandPermissions("droplet.command.int")
-	public void i(CommandContext args, CommandSource source) {
+	@Permissible("droplet.command.int")
+	public void i(CommandSource source, CommandArguments args) throws CommandException {
 		if (args.length() == 1) {
 			int value = args.getInteger(0);
 			DropletConfigFile.INT.setValue(value);
@@ -54,15 +53,15 @@ public class DropletCommands {
 			} catch (ConfigurationException e) {
 				e.printStackTrace();
 			}
-			source.sendMessage(new ChatArguments(value, " was added to the integer config file."));
+			source.sendMessage(value + " was added to the integer config file.");
 		} else {
-			source.sendMessage(new ChatArguments("Syntax: /c <int/i> <integer>"));
+			source.sendMessage("Syntax: /c <int/i> <integer>");
 		}
 	}
 
 	@Command(aliases = {"s", "string"}, usage = "<string>", desc = "Edits the string portion of the config.")
-	@CommandPermissions("droplet.command.int")
-	public void s(CommandContext args, CommandSource source) {
+	@Permissible("droplet.command.int")
+	public void s(CommandSource source, CommandArguments args) throws CommandException {
 		if (args.length() >= 1) {
 			String value = "";
 			for (int i = 0; i < args.length(); i++) {
@@ -78,15 +77,15 @@ public class DropletCommands {
 			} catch (ConfigurationException e) {
 				e.printStackTrace();
 			}
-			source.sendMessage(new ChatArguments(value, " was added to the string config file."));
+			source.sendMessage(value + " was added to the string config file.");
 		} else {
-			source.sendMessage(new ChatArguments("Syntax: /c <string/s> <string>"));
+			source.sendMessage("Syntax: /c <string/s> <string>");
 		}
 	}
 
 	@Command(aliases = {"sl", "stringlist"}, usage = "<stringlist>", desc = "Adds the string to the string list portion of the config.")
-	@CommandPermissions("droplet.command.int")
-	public void sl(CommandContext args, CommandSource source) {
+	@Permissible("droplet.command.int")
+	public void sl(CommandSource source, CommandArguments args) throws CommandException {
 		if (args.length() >= 1) {
 			String value = "";
 			for (int i = 0; i < args.length(); i++) {
@@ -104,9 +103,9 @@ public class DropletCommands {
 			} catch (ConfigurationException e) {
 				e.printStackTrace();
 			}
-			source.sendMessage(new ChatArguments(ChatStyle.RED, value, ChatStyle.WHITE, " was added to the string list config file."));
+			source.sendMessage(value + " was added to the string list config file.");
 		} else {
-			source.sendMessage(new ChatArguments("Syntax: /c <stringlist/sl> <string>"));
+			source.sendMessage("Syntax: /c <stringlist/sl> <string>");
 		}
 	}
 }
