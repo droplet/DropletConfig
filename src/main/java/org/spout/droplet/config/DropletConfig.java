@@ -26,8 +26,8 @@ package org.spout.droplet.config;
 import java.util.logging.Level;
 
 import org.spout.api.command.annotated.AnnotatedCommandExecutorFactory;
-import org.spout.api.exception.ConfigurationException;
 import org.spout.api.plugin.Plugin;
+import org.spout.cereal.config.ConfigurationException;
 import org.spout.droplet.config.commands.DropletCommands;
 import org.spout.droplet.config.configuration.DropletConfigFile;
 

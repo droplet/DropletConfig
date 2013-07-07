@@ -30,8 +30,7 @@ import org.spout.api.command.CommandSource;
 import org.spout.api.command.annotated.Command;
 import org.spout.api.command.annotated.Permissible;
 import org.spout.api.exception.CommandException;
-import org.spout.api.exception.ConfigurationException;
-
+import org.spout.cereal.config.ConfigurationException;
 import org.spout.droplet.config.DropletConfig;
 import org.spout.droplet.config.configuration.DropletConfigFile;
 
